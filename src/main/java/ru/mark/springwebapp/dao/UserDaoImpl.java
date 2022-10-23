@@ -12,6 +12,7 @@ public class UserDaoImpl implements UserDao{
     @PersistenceContext
     private final EntityManager entityManager;
 
+
     @Autowired
     public UserDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -23,7 +24,7 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public User show(int id) {
+    public User show(long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -33,15 +34,13 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public void update(int id, User newUser) {
-        User user = entityManager.find(User.class, id);
-
-        user.setName(newUser.getName());
-        user.setSurname(newUser.getSurname());
+    public void update(long id, User newUser) {
+        newUser.setId(id);
+        entityManager.merge(newUser);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         entityManager.remove(entityManager.find(User.class, id));
     }
 }

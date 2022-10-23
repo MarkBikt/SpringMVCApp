@@ -12,7 +12,7 @@ public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @NotEmpty(message = "Name not null")
     @Size(min = 1, max = 30, message = "Name between 1 or 30")
     @Column(name = "name")
@@ -30,11 +30,11 @@ public class User {
         this.surname = surname;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
