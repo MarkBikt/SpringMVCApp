@@ -58,7 +58,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "users/edit";
         }
-        userService.update(id, user);
+        userService.update(user);
         return "redirect:/users/{id}";
     }
 
@@ -80,3 +80,5 @@ public class UserController {
 //модель всегда эевалс и хешкод
 //public interface UserRepository extends JpaRepository<User, Integer>
 // у тебя есть четкое задание что нужно использовать в качестве дао
+
+//newUser.setId(id); а прям нужно сет id делать? юзер у тебя без id приходит с фронта?
